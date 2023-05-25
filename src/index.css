@@ -2,4 +2,38 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-size: 1.1rem;
 }
+
+.app{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: aliceblue;
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.container{
+  background-color: rgb(192, 223, 250);
+  padding: 1rem;
+}
+
+input[type=text],.postContent{
+  margin: .5rem;
+  padding: .5rem;
+}
+button{
+  margin: .5rem;
+  background-color: rgb(85, 169, 243);
+  border: none;
+  padding: .5rem;
+}
+button:hover{
+  background-color: rgb(181, 182, 183);
+}
+
