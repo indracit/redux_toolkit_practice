@@ -18,7 +18,7 @@ const App = () => {
     <div className="app">
       <Addpost   setPosts={setPosts}/>
       {posts.map((post,index) : React.ReactNode => {
-        return <Viewpost post={post} key={index} />
+        return <Viewpost post={post} index={index} setPosts={setPosts} key={index} />
       })}
     </div>
   )

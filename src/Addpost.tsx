@@ -24,13 +24,15 @@ const Addpost = ({setPosts}: proptype ) => {
                 placeholder="title"
                 value={title}
                 onChange={(e)=>setTitle(e.target.value)}
+                required
                 />
                 <textarea 
                 className="postContent" 
                 rows={5} cols={40} 
                 placeholder="type post here"
                 value={post}
-                onChange={(e)=>setPost(e.target.value)}/>
+                onChange={(e)=>setPost(e.target.value)}
+                required/>
 
                 <button type="submit">Add Post</button>
             </form>
