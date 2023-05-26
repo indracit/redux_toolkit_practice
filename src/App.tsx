@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Addpost from "./Addpost"
 import './index.css'
+import Viewpost from "./Viewpost"
 
 export type postType = {
   id: number,
@@ -11,16 +12,14 @@ export type postType = {
 
 const App = () => {
 
-  const [posts,setPosts] = useState<postType>({
-    id: 1,
-    title: 'Lorem Ipsum',
-    body: 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto ',
-    userId: 1
-  });
+  const [posts,setPosts] = useState<postType[]>([]);
 
   return (
     <div className="app">
-      <Addpost setPosts={setPosts}/>
+      <Addpost   setPosts={setPosts}/>
+      {posts.map((post,index) : React.ReactNode => {
+        return <Viewpost post={post} key={index} />
+      })}
     </div>
   )
 }
