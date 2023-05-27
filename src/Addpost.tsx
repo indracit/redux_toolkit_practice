@@ -1,11 +1,11 @@
 import { useState } from "react"
-import { postType } from "./App"
+import { usePostDispatch } from "./hooks"
+import { addpost } from "./postSlice"
 
-type proptype ={
-    setPosts : React.Dispatch<React.SetStateAction<postType[]>>
-}
-const Addpost = ({setPosts}: proptype ) => {
 
+const Addpost = () => {
+
+    const dispatch = usePostDispatch();
     const [title, setTitle] = useState<string>('');
     const [post, setPost] = useState<string>('');
 
@@ -13,7 +13,7 @@ const Addpost = ({setPosts}: proptype ) => {
         e.preventDefault();
         setTitle('');
         setPost('');
-        setPosts((prevState)=>[...prevState,{id: new Date().getSeconds(),title:title,body:post,userId:1}]) 
+        dispatch(addpost({title,post}))
     }
 
     return (

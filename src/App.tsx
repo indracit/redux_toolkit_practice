@@ -1,7 +1,7 @@
-import { useState } from "react"
 import Addpost from "./Addpost"
 import './index.css'
 import Viewpost from "./Viewpost"
+import { usePostSelector } from "./hooks"
 
 export type postType = {
   id: number,
@@ -12,13 +12,17 @@ export type postType = {
 
 const App = () => {
 
-  const [posts,setPosts] = useState<postType[]>([]);
+  const posts = usePostSelector((state)=> state.posts)
+
 
   return (
     <div className="app">
-      <Addpost   setPosts={setPosts}/>
+      <Addpost/>
       {posts.map((post,index) : React.ReactNode => {
-        return <Viewpost post={post} index={index} setPosts={setPosts} key={index} />
+        return <Viewpost 
+        post={post} 
+        index={index} 
+        key={index} />
       })}
     </div>
   )

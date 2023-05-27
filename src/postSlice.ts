@@ -8,17 +8,22 @@ export interface postType  {
     userId: number
 }
 
-const initialState : postType[] = [];
+const initialState : postType[] = [{
+    userId: 1,
+    id: 1,
+    title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+    body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}];
 
 const postSlice = createSlice({
     name : 'posts',
     initialState,
     reducers:{
         addpost : (state,action) => {
-            state = [...state,{id: new Date().getSeconds(),title: action.payload.title,body:action.payload.post,userId:1}]
+            state.push({id: new Date().getSeconds(),title: action.payload.title,body:action.payload.post,userId:1})
         },
         deletepost : (state,action) => {
-            state = [...state.slice(0,action.payload.index),...state.slice(action.payload.index+1,state.length)]
+            state.splice(action.payload.index,action.payload.index+1)
         }
     }
 })
